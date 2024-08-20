@@ -1,0 +1,376 @@
+<WindowManager>
+    Screen1:
+    Screen2:
+    Screen3:
+    Screen4:
+    Screen5:
+    Screen6:
+
+<Screen1>:
+    name: "mainpage"
+    MDCard:
+        size: 340,655
+        size_hint: None,None
+        pos_hint: {"center_x": 0.5}
+        elevation: 15
+        padding: 10
+        spacing: 10
+        MDFloatLayout:
+            Image:
+                source: 'Hello.png'
+                pos_hint:  {"center_x": 0.5}
+            Image:
+                source: 'Spinner.gif'
+                pos_hint: {"center_x":0.5,"center_y":0.1}
+                size_hint: 0.3,0.3
+            
+
+<Screen2>:
+    name: "login"
+    MDCard:
+        size: 340,665
+        size_hint: None,None
+        pos_hint: {"center_x": 0.5}
+        elevation: 15
+        padding: 10
+        spacing: 10
+        MDFloatLayout:
+            orientation: 'vertical' 
+            MDLabel:
+                text: "Login Page"
+                font_size: 35
+                pos_hint: {"center_x": 0.75,"center_y": 0.9}
+                
+            MDTextField:
+                hint_text: 'username'
+                icon_left: 'language-python'
+                id: user
+                icon_right: "account"
+                width: 150
+                font_size: 20
+                pos_hint: {"center_x": 0.5,"center_y": 0.65}
+            Clickable:
+                hint_text: 'password'
+                id: password
+                width: 150
+                font_size: 20
+                pos_hint: {"center_x": 0.5,"center_y": 0.55}
+            MDFillRoundFlatButton:
+                background: 1,0,1,1
+                text: "Login"
+                font_size: 20
+                size_hint: 0.5,0.1
+                on_press: app.login()
+                pos_hint: {"center_x": 0.5,"center_y":0.4}
+
+<Screen3>:
+    name: "chatt"
+    MDCard:
+        size: 340,655
+        size_hint: None,None
+        pos_hint: {"center_x": 0.5}
+        elevation: 15
+        padding: 10
+        spacing: 10
+        MDBottomNavigation:
+            id: "navigation"
+            MDBottomNavigationItem:
+                text: "Chats"
+                icon: "chat"
+                name: "Chats"
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDTopAppBar:
+                        title: "Chat"
+                        left_action_items: [["arrow-left", lambda x: app.back('room')]]
+                        halign: 'left'
+                        pos_hint: {'center_y':0.95}
+                    GridLayout:
+                        rows: 5
+                        MDLabel:
+                            text: "Private Chat"
+                            font_size: 30
+                            halign: 'center'
+                        GridLayout:
+                            cols: 2
+                            MDFloatLayout:
+                                MDLabel:
+                                    text: "Enter IP: "
+                                    font_size: 20
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                            MDFloatLayout:
+                                MDTextField:
+                                    id: ipaddr
+                                    hint_text: "111.111.111.111"
+                                    mode: 'round'
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                                    width: 100
+                        GridLayout:
+                            cols: 2
+                            MDFloatLayout:
+                                MDLabel:
+                                    text: "Enter PORT: "
+                                    font_size: 20
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                            MDFloatLayout:
+                                MDTextField:
+                                    id: port
+                                    hint_text: "8888"
+                                    mode: 'round'
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                                    width: 100
+                        GridLayout:
+                            cols: 2
+                            MDFloatLayout:
+                                MDLabel:
+                                    text: "Enter nickname: "
+                                    font_size: 20
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                            MDFloatLayout:
+                                MDTextField:
+                                    id: nickname
+                                    hint_text: "8888"
+                                    mode: 'round'
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                                    width: 100
+                        GridLayout:
+                            cols: 2
+                            padding: 20
+                            spacing: 40
+                            MDFillRoundFlatButton:
+                                text: "Start Chat"
+                                font_size: 20
+                                size: 0.3,0.1
+                                on_press: app.startserver()
+                            
+                            MDFillRoundFlatButton:
+                                text: "Join Chat"
+                                font_size: 20
+                                size: 0.3,0.1
+                                on_press: app.start()
+                                
+
+
+            MDBottomNavigationItem:
+                name: "ChatRoom"
+                text: "ChatRoom"
+                icon: "chatroom"
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDTopAppBar:
+                        title: "ChatRoom"
+                        left_action_items: [["arrow-left", lambda x: app.back('room')]]
+                        halign: 'left'
+                        pos_hint: {'center_y':0.95}
+                    GridLayout:
+                        rows: 5
+                        MDLabel:
+                            text: "[color=#0000ff]Chat Room[/color]"
+                            font_size: 30
+                            halign: 'center'
+                            markup: True
+                        GridLayout:
+                            cols: 2
+                            MDFloatLayout:
+                                MDLabel:
+                                    text: "Enter IP: "
+                                    font_size: 20
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                            MDFloatLayout:
+                                MDTextField:
+                                    id: ipadd
+                                    hint_text: "111.111.111.111"
+                                    mode: 'round'
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                                    width: 100
+                        GridLayout:
+                            cols: 2
+                            MDFloatLayout:
+                                MDLabel:
+                                    text: "Enter PORT: "
+                                    font_size: 20
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                            MDFloatLayout:
+                                MDTextField:
+                                    id: por
+                                    hint_text: "8888"
+                                    mode: 'round'
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                                    width: 100
+                        GridLayout:
+                            cols: 2
+                            MDFloatLayout:
+                                MDLabel:
+                                    text: "Enter nickname: "
+                                    font_size: 20
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                            MDFloatLayout:
+                                MDTextField:
+                                    id: nicks
+                                    hint_text: "8888"
+                                    mode: 'round'
+                                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                                    width: 100
+                        GridLayout:
+                            cols: 2
+                            padding: 10
+                            spacing: 35
+                            MDFillRoundFlatButton:
+                                text: "Start Room"
+                                font_size: 20
+                                size: 0.25,0.1
+                                on_press: app.send_over()
+                                
+                            
+                            MDFillRoundFlatButton:
+                                text: "Join Room"
+                                font_size: 20
+                                size: 0.25,0.1
+                                on_press: app.join_over()
+
+            MDBottomNavigationItem:
+                name: "Profile"
+                text: "Profile"
+                icon: "account"
+                MDFloatLayout:
+                    MDTopAppBar:
+                        title: "Profile"
+                        left_action_items: [["arrow-left", lambda x: app.back('room')]]
+                        halign: 'left'
+                        pos_hint: {'center_y':0.95}
+                    
+                    MDLabel:
+                        text: 'Profile'
+                        font_size: 30
+                        pos_hint: {'center_x':0.875,'center_y':0.8}
+                        
+                    MDLabel:
+                        text: "Username: "
+                        font_size: 20
+                        pos_hint: {'center_x':0.55,'center_y':0.65}
+                    MDLabel:
+                        id: userna
+                        text: ""
+                        font_size: 20
+                        pos_hint: {'center_x':1,'center_y':0.65} 
+                
+                    MDLabel:
+                        text: "Password: "
+                        font_size: 20
+                        pos_hint: {'center_x':0.55,'center_y':0.55}
+                    MDLabel:
+                        id: pwd
+                        text: ""
+                        font_size: 20 
+                        pos_hint: {'center_x':1,'center_y':0.55}
+                        
+                    MDFillRoundFlatButton:
+                        text: "Change Password"
+                        font_size: 20
+                        size_hint: 0.1,0.1
+                        pos_hint: {'center_x':0.5,'center_y':0.35}
+
+                        
+
+
+
+
+<Screen5>:
+    name: "newscreen"
+    MDCard:
+        size: 340,665
+        size_hint: None,None
+        pos_hint: {"center_x": 0.5}
+        elevation: 15
+        padding: 10
+        spacing: 10
+        BoxLayout:
+            orientation: 'vertical'
+            MDTopAppBar:
+                title: "Chats"
+                left_action_items: [["arrow-left", lambda x: app.backdialog()]]
+                right_action_items: [["dots-vertical",lambda x: app.open_menu(x)]]
+                halign: 'left'
+            MDScrollView:
+                id: scroll
+                MDLabel:
+                    id: message_list
+                    font_size: 20
+                    text: ""
+                    markup: True
+                
+            BoxLayout:
+                size_hint_y: None
+                padding: dp(10)
+                spacing: dp(10)
+
+                MDTextField:
+                    id: message_input
+                    hint_text: "Type something"
+                    mode: "rectangle"
+                    size_hint_x: 0.8
+            
+                MDRaisedButton:
+                    text: "send"
+                    size_hint_x: 0.2
+                    on_release: app.send_message()
+
+
+<Screen6>:
+    name: "chatroom"
+    MDCard:
+        size: 340,665
+        size_hint: None,None
+        pos_hint: {"center_x": 0.5}
+        elevation: 15
+        padding: 10
+        spacing: 10
+        BoxLayout:
+            orientation: 'vertical'
+            MDTopAppBar:
+                title: "Chat Room"
+                left_action_items: [["arrow-left", lambda x: app.room_dialog()]]
+                right_action_items: [["dots-vertical",lambda x: app.open_menur(x)]]
+                halign: 'left'
+            MDScrollView:
+                id: scroll
+                MDLabel:
+                    id: message_list
+                    text: ""
+                    font_size: 20
+                    markup: True
+                
+            BoxLayout:
+                size_hint_y: None
+                padding: dp(10)
+                spacing: dp(10)
+
+                MDTextField:
+                    id: message_input
+                    hint_text: "Type something"
+                    mode: "rectangle"
+                    size_hint_x: 0.8
+            
+                MDRaisedButton:
+                    text: "send"
+                    size_hint_x: 0.2
+                    on_release: app.send_room()
+<Clickable>:
+    size_hint_y: None
+    height: text_field.height
+
+    MDTextField:
+        id: text_field
+        hint_text: root.hint_text
+        text: root.text
+        password: True
+        icon_left: "key-variant"
+
+    MDIconButton:
+        icon: "eye-off"
+        pos_hint: {'center_y':.5}
+        pos: text_field.width -self.width +dp(8),0
+        theme_text_color: "Hint"
+        on_release:
+            self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+            text_field.password = False if text_field.password is True else True
